@@ -13,6 +13,8 @@ def home(request):
     context = {'rooms': rooms}
     return render(request, 'base/home.html', context)
 
-
-def room(request):
+'''
+Working with path parameters
+'''
+def room(request, pk):
     return render(request, 'base/room.html')
