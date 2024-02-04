@@ -17,4 +17,9 @@ def home(request):
 Working with path parameters
 '''
 def room(request, pk):
-    return render(request, 'base/room.html')
+    room = None
+    for room_dict in rooms:
+        if room_dict['id'] == int(pk):
+            room = room_dict
+    context = {'room':room}
+    return render(request, 'base/room.html', context)
