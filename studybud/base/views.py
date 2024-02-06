@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Room
+from .forms import RoomForm
 
 # Create your views here.
 
@@ -30,5 +31,6 @@ We want to learn how to work with a database outside the django Admin Panel!
 '''
 
 def createRoom(request):
-    context = {}
+    form = RoomForm()
+    context = {'form':form}
     return render(request, 'base/room_form.html', context)

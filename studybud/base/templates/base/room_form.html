@@ -18,7 +18,7 @@ So, one template for two different views.
     {% endcomment %}
     <form method='POST', action=''>
         {% csrf_token %}
-
+        {{form.as_p}}
         <input type="submit" value="Submit" /> 
 
     </form>
