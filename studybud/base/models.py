@@ -22,6 +22,10 @@ class Room(models.Model):
     # participants = 
     updated = models.DateTimeField(auto_now=True)        # Takes a snapshot on everytime we save this item.
     created = models.DateTimeField(auto_now_add=True)    # Only takes a time stamp when we FIRST save or create this instance!
+    
+    class Meta:
+        ordering = ['-updated', '-created']             # Order the rooms in Descending Ording (top to bottom) first by updated field and then by created field - so newest updated room will be first!
+        
 
     
     def __str__(self):

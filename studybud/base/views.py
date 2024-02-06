@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Room
 from .forms import RoomForm
@@ -31,6 +31,14 @@ We want to learn how to work with a database outside the django Admin Panel!
 '''
 
 def createRoom(request):
-    form = RoomForm()
+    form = RoomForm()                  # If its a GET request just display the form empty to fill up
+    
+    if request.method == "POST":
+        # print(request.POST)          # Prints: <QueryDict: {'csrfmiddlewaretoken': ['5IhuCmLnA2ABPdUTz0vpGZUMGLgXxLHXswJz6qaPk2IswFv8B4Bvcp680tbcLkXR'], 'host': ['1'], 'topic': ['2'], 'name': ['Lets LEARN!'], 'description': ['']}>
+        form = RoomForm(request.POST)  # populating the form with the data that was submitted
+        if form.is_valid():
+            form.save()
+            return redirect('home')    # If the form is good then redirect the user to the home page ('home' being the name attribute of the url pattern)
+        
     context = {'form':form}
     return render(request, 'base/room_form.html', context)
