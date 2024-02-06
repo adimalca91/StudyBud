@@ -6,15 +6,19 @@
 
 <div>
     <div>
-        {{rooms}}
+        <p> {{rooms}}</p>
 
         {% for room in rooms %}
 
-        <h3> This is the room object {{room}} </h3>
+        {% comment %} <h3> This is the room object {{room}} </h3> {% endcomment %}
 
         <div>
+            <span> @{{room.host.username}} </span> <!-- Display the host name -->
+
             {% comment %} <h5> {{room.id}} -- <a href="/room/{{room.id}}">{{room.name}}</a> </h5> {% endcomment %}
             <h5> {{room.id}} -- <a href="{% url 'room' room.id %}">{{room.name}}</a> </h5>  <!-- Using the name attribute here instead of the path itself as shown above -->
+            <small> {{room.topic.name}} </small>
+            <hr>
         </div>
 
         {%endfor%}

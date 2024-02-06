@@ -11,7 +11,7 @@ from .models import Room
 # ]
 
 def home(request):
-    rooms = Room.objects.all() # objects is the model Manager! A python way to communicate with the models / DB
+    rooms = Room.objects.all() # objects is the model Manager! A python way to communicate with the models / DB - query the DB for all objects
     context = {'rooms': rooms}
     return render(request, 'base/home.html', context)
 
@@ -19,6 +19,6 @@ def home(request):
 Working with path parameters
 '''
 def room(request, pk):
-    room = Room.objects.get(id=pk)   # Retrieves a single instance from the Room DB with the given id
+    room = Room.objects.get(id=pk)   # Retrieves a single instance from the Room DB with the given id - query the DB for a single object
     context = {'room':room}
     return render(request, 'base/room.html', context)
