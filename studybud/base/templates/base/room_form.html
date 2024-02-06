@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% comment %}
+
+We are going to create a template that is going to represent a form for updating and creating a room
+So, one template for two different views.
+
+{% endcomment %}
+
+
+{% block content %}
+
+<div>
+    {% comment %}
+    action - if i don't specify it, it will send it to the current url that we are at!
+    I could send it to a specific URL or I can just say - when we hit submit/post then
+    send it to the same url except for now send a POST data instead of GET data!
+    {% endcomment %}
+    <form method='POST', action=''>
+        {% csrf_token %}
+
+        <input type="submit" value="Submit" /> 
+
+    </form>
+</div>
+
+{% endblock content %}

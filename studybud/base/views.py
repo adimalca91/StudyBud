@@ -22,3 +22,13 @@ def room(request, pk):
     room = Room.objects.get(id=pk)   # Retrieves a single instance from the Room DB with the given id - query the DB for a single object
     context = {'room':room}
     return render(request, 'base/room.html', context)
+
+'''
+Now we want to add the CRUD operations!
+The core of any functionality on a website!
+We want to learn how to work with a database outside the django Admin Panel!
+'''
+
+def createRoom(request):
+    context = {}
+    return render(request, 'base/room_form.html', context)
