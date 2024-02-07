@@ -16,7 +16,7 @@ We want to know when a room was first created and evey time it gets updated
 '''
 class Room(models.Model):
     host =  models.ForeignKey(User, on_delete=models.SET_NULL, null=True) # One host/User can have lots of Rooms whereas a room can have only one host
-    topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
+    topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True) # One Topic can have many rooms, so each room should point / connect to a specific topic
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True) # null value is allowed
     # participants = 
