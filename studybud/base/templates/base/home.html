@@ -16,11 +16,12 @@
         {% comment %} <h3> This is the room object {{room}} </h3> {% endcomment %}
 
         <div>
+            <a href="{% url 'update-room' room.id %}">Edit</a>
+            <a href="{% url 'delete-room' room.id %}">Delete</a>
             <span> @{{room.host.username}} </span> <!-- Display the host name -->
 
             {% comment %} <h5> {{room.id}} -- <a href="/room/{{room.id}}">{{room.name}}</a> </h5> {% endcomment %}
             <h5> {{room.id}} -- <a href="{% url 'room' room.id %}">{{room.name}}</a> </h5>  <!-- Using the name attribute here instead of the path itself as shown above -->
-            <h5><a href="{% url 'update-room' room.id %}">Edit</a></h5>
             <small> {{room.topic.name}} </small>
             <hr>
         </div>

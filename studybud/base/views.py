@@ -48,7 +48,7 @@ def createRoom(request):
 
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
-    form = RoomForm(instance=room)
+    form = RoomForm(instance=room)   # This form will be pre-filled with this room's values
     
     if request.method=="POST":
         form = RoomForm(request.POST, instance=room)
@@ -58,3 +58,13 @@ def updateRoom(request, pk):
     
     context = {'form':form}
     return render(request, 'base/room_form.html', context)
+
+def deleteRoom(request, pk):
+    room = Room.objects.get(id=pk)
+    
+    if request.method == "POST":         # If its a POST method that means the user clicked "Confirm"
+        room.delete()                    # Remove that item from the DB and delete it
+        return redirect('home')
+    
+    context = {'obj':room}
+    return render(request, 'base/delete.html', context)
